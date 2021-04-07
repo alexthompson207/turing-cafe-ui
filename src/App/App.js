@@ -48,6 +48,7 @@ class App extends Component {
         <main>
           <h1 className='app-title'>Turing Cafe Reservations</h1>
           <Form addResy={this.addResy} />
+          {this.state.error && <h2 className='error'>{this.state.error}</h2>}
           <ResyView bookings={this.state.bookings} deleteResy={this.deleteResy} />
         </main>
       </div>

@@ -9,7 +9,7 @@ const Card = ({ id, name, date, time, number }) => {
       <p>{date}</p>
       <p>{time}</p>
       <p>Number of guests: {number}</p>
-      <button>Cancel</button>
+      <button className='cancel-btn'>Cancel</button>
     </section>
   )
 }

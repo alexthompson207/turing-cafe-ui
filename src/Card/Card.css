@@ -7,3 +7,11 @@
   border: 5px solid teal;
   border-radius: 10px;
 }
+
+.cancel-btn {
+  width: 80%;
+  color: white;
+  background-color: teal;
+  padding: 5px 0;
+  cursor: pointer;
+}

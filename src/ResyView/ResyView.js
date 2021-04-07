@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 const ResyView = () => {
 
   return (
-
+    <Card />
   )
 }
 

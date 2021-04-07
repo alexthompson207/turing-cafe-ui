@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
+import ResyView from '../ResyView/ResyView';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-
+      bookings: [],
+      error: ''
     }
   }
+
+  componentDidMount() {
+    fetch('http://localhost:3001/api/v1/reservations')
+      .then(response => response.json())
+      .then(bookings => this.setState({ bookings }))
+      .catch(err => this.setState({ error: 'Opps, something went wrong' }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,7 +26,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-
+          <ResyView />
         </div>
       </div>
     )
@@ -24,3 +34,4 @@ class App extends Component {
 }
 
 export default App;
+

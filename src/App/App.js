@@ -35,6 +35,11 @@ class App extends Component {
       })
   }
 
+  deleteResy = (id) => {
+    const filteredResys = this.state.bookings.filter(booking => booking.id !== id)
+    this.setState({ bookings: filteredResys })
+  }
+
   render() {
     return (
       <div className="App">
@@ -43,7 +48,7 @@ class App extends Component {
           <Form addResy={this.addResy} />
         </div>
         <div className='resy-container'>
-          <ResyView bookings={this.state.bookings} />
+          <ResyView bookings={this.state.bookings} deleteResy={this.deleteResy} />
         </div>
       </div>
     )

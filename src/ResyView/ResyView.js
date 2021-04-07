@@ -17,9 +17,9 @@ const ResyView = ({ bookings }) => {
     )
   })
   return (
-    <>
+    <section className='booking-view'>
       {bookingCards}
-    </>
+    </section>
   )
 }
 

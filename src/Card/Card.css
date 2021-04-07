@@ -1,8 +1,9 @@
 .card {
+  width: 15%;
+  margin: 2% 0;
+  padding: 1%;
   color: teal;
   background-color: white;
   border: 5px solid teal;
-  margin: 2%;
-  padding: 2%;
   border-radius: 10px;
 }

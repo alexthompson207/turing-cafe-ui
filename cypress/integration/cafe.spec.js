@@ -63,6 +63,5 @@ describe('Turing Cafe', () => {
 
     cy.get('.resy-btn').click();
     cy.get('.booking-view').children().should('have.length', '4');
-
-  })
+  });
 })

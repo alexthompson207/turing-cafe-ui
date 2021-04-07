@@ -52,6 +52,16 @@ describe('Turing Cafe', () => {
   });
 
   it('should be able to view a new reservation after inputing correct info and clicking make reservation', () => {
+    cy.intercept({
+      method: 'POST',
+      url: 'http://localhost:3001/api/v1/reservations'
+    },
+      {
+        statusCode: 201,
+        body:
+          { 'id': 99, 'name': 'Alex', 'date': '03/02', 'time': '6:00', 'number': 2 },
+      });
+
     cy.get('input[name="name"]')
       .type('Alex')
     cy.get('input[name="date"]')
@@ -63,5 +73,38 @@ describe('Turing Cafe', () => {
 
     cy.get('.resy-btn').click();
     cy.get('.booking-view').children().should('have.length', '4');
+  });
+
+  it('should be able to cancel a reservation by clicking the cancel button', () => {
+    cy.intercept({
+      method: 'POST',
+      url: 'http://localhost:3001/api/v1/reservations'
+    },
+      {
+        statusCode: 201,
+        body:
+          { 'id': 99, 'name': 'Alex', 'date': '03/02', 'time': '6:00', 'number': 2 },
+      });
+
+    cy.intercept({
+      method: 'DELETE',
+      url: 'http://localhost:3001/api/v1/reservations'
+    }, {
+      statusCode: 201
+    });
+
+
+    cy.get('input[name="name"]')
+      .type('Alex')
+    cy.get('input[name="date"]')
+      .type('03/02')
+    cy.get('input[name="time"]')
+      .type('6:00')
+    cy.get('input[name="number"]')
+      .type('2')
+    cy.get('.resy-btn').click();
+    cy.get('.booking-view').children().should('have.length', '4');
+    cy.get('#99 .cancel-btn').click();
+    cy.get('.booking-view').children().should('have.length', '3');
   });
 })

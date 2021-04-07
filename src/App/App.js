@@ -52,13 +52,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <div className='resy-form'>
+        <main>
+          <h1 className='app-title'>Turing Cafe Reservations</h1>
           <Form addResy={this.addResy} />
-        </div>
-        <div className='resy-container'>
           <ResyView bookings={this.state.bookings} deleteResy={this.deleteResy} />
-        </div>
+        </main>
       </div>
     )
   }

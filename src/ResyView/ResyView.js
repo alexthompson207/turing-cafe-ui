@@ -2,7 +2,7 @@ import React from 'react';
 import './ResyView.css';
 import Card from '../Card/Card';
 
-const ResyView = ({ bookings }) => {
+const ResyView = ({ bookings, deleteResy }) => {
 
   const bookingCards = bookings.map(booking => {
     return (
@@ -13,6 +13,7 @@ const ResyView = ({ bookings }) => {
         date={booking.date}
         number={booking.number}
         time={booking.time}
+        deleteResy={deleteResy}
       />
     )
   })

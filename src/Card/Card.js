@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-const Card = ({ id, name, date, time, number }) => {
+const Card = ({ id, name, date, time, number, deleteResy }) => {
 
   return (
     <section className='card' id={id}>
@@ -9,11 +9,9 @@ const Card = ({ id, name, date, time, number }) => {
       <p>{date}</p>
       <p>{time}</p>
       <p>Number of guests: {number}</p>
-      <button className='cancel-btn'>Cancel</button>
+      <button className='cancel-btn' onClick={() => deleteResy(id)}>Cancel</button>
     </section>
   )
 }
 
 export default Card;
-
-// [{ id: 18907224, name: 'Christie', date: '8/8', time: '7:00', number: 3 }]

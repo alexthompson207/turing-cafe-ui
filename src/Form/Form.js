@@ -54,7 +54,7 @@ class Form extends Component {
           name='date'
           placeholder='Date (mm/dd)'
           value={this.state.date}
-          onChange={event => this.handleInput(event)}
+          onChange={this.handleInput}
         />
         <input
           type='text'
@@ -70,7 +70,7 @@ class Form extends Component {
           value={this.state.number}
           onChange={this.handleInput}
         />
-        <button className='resy-btn' onClick={event => this.createNewResy(event)}>Make Reservation</button>
+        <button className='resy-btn' onClick={this.createNewResy}>Make Reservation</button>
       </form>
     )
   }

@@ -31,23 +31,38 @@ describe('Turing Cafe', () => {
     cy.get('input[name="name"]')
       .type('Alex')
       .should('have.value', 'Alex')
-  })
+  });
 
   it('should be able to select the date input and fill it with the corresponding value', () => {
     cy.get('input[name="date"]')
       .type('03/02')
       .should('have.value', '03/02')
-  })
+  });
 
   it('should be able to select the time input and fill it with the corresponding value', () => {
     cy.get('input[name="time"]')
       .type('6:00')
       .should('have.value', '6:00')
-  })
+  });
 
   it('should be able to select the number of guests input and fill it with the corresponding value', () => {
     cy.get('input[name="number"]')
       .type('2')
       .should('have.value', '2')
+  });
+
+  it('should be able to view a new reservation after inputing correct info and clicking make reservation', () => {
+    cy.get('input[name="name"]')
+      .type('Alex')
+    cy.get('input[name="date"]')
+      .type('03/02')
+    cy.get('input[name="time"]')
+      .type('6:00')
+    cy.get('input[name="number"]')
+      .type('2')
+
+    cy.get('.resy-btn').click();
+    cy.get('.booking-view').children().should('have.length', '4');
+
   })
 })

@@ -1,0 +1,19 @@
+.resy-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-input, .resy-btn {
+  width: 15%;
+  padding: 6px 5px;
+  font-size: 14px;
+  margin: 10px 15px;
+}
+
+
+.resy-btn {
+  color: white;
+  background-color: teal;
+  cursor: pointer;
+}

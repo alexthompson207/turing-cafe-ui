@@ -12,6 +12,10 @@ class Form extends Component {
     }
   }
 
+  handleInput = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
   render() {
     return (
       <form>
@@ -20,24 +24,28 @@ class Form extends Component {
           name='name'
           placeholder='Name'
           value={this.state.name}
+          onChange={this.handleInput}
         />
         <input
           type='text'
           name='date'
           placeholder='Date (mm/dd)'
           value={this.state.date}
+          onChange={this.handleInput}
         />
         <input
           type='text'
           name='time'
           placeholder='Time'
           value={this.state.time}
+          onChange={this.handleInput}
         />
         <input
           type='text'
           name='number'
           placeholder='Number of guests'
           value={this.state.number}
+          onChange={this.handleInput}
         />
         <button className='resy-btn'>Make Reservation</button>
       </form>

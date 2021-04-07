@@ -5,7 +5,7 @@ const getAllReservations = () => {
     .then(response => response.json())
 }
 
-const postResy = (newResy) => {
+const postReservation = (newResy) => {
   return fetch(`${baseURL}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -14,5 +14,11 @@ const postResy = (newResy) => {
     .then(response => response.json())
 }
 
+const deleteReservation = (id) => {
+  return fetch(`${baseURL}/${id}`, {
+    method: 'DELETE'
+  })
+}
 
-export { getAllReservations, postResy };
+
+export { getAllReservations, postReservation, deleteReservation };

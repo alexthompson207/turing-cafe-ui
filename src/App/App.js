@@ -26,7 +26,13 @@ class App extends Component {
       body: JSON.stringify(newResy)
     })
       .then(response => response.json())
-    this.setState({ bookings: [...this.state.bookings, newResy], error: '' })
+      .then(resy => {
+        if (resy.id) {
+          this.setState({ bookings: [...this.state.bookings, resy], error: '' })
+        } else {
+          this.setState({ error: 'Please enter the correct inputs' })
+        }
+      })
   }
 
   render() {

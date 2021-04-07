@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ResyView from '../ResyView/ResyView';
 import Form from '../Form/Form';
+import { getAllReservations, postReservation, deleteReservation } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -13,19 +14,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/reservations')
-      .then(response => response.json())
+    getAllReservations()
       .then(bookings => this.setState({ bookings }))
       .catch(err => this.setState({ error: 'Opps, something went wrong' }))
   }
 
   addResy = (newResy) => {
-    fetch('http://localhost:3001/api/v1/reservations', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newResy)
-    })
-      .then(response => response.json())
+    postReservation(newResy)
       .then(resy => {
         if (resy.id) {
           this.setState({ bookings: [...this.state.bookings, resy], error: '' });
@@ -36,9 +31,7 @@ class App extends Component {
   }
 
   deleteResy = (id) => {
-    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
-      method: 'DELETE'
-    })
+    deleteReservation(id)
       .then(resy => {
         if (resy.ok) {
           const filteredResys = this.state.bookings.filter(booking => booking.id !== id);

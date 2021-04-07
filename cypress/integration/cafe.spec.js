@@ -20,4 +20,10 @@ describe('Turing Cafe', () => {
   it('Should be able to visit the page and view the title', () => {
     cy.get('h1').contains('Turing Cafe');
   })
+
+  it('Should be able to visit the page and view a form and existing reservation cards', () => {
+    cy.get('.resy-form').children('input').should('have.length', '4');
+    cy.get('.resy-form').children('button').contains('Make Reservation');
+    cy.get('.booking-view').children().should('have.length', '3');
+  });
 })

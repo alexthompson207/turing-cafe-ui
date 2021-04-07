@@ -26,6 +26,8 @@ class Form extends Component {
       time,
       number: Number(number)
     }
+
+    this.clearInputs();
   }
 
   clearInputs = () => {

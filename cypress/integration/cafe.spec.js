@@ -19,11 +19,35 @@ describe('Turing Cafe', () => {
 
   it('Should be able to visit the page and view the title', () => {
     cy.get('h1').contains('Turing Cafe');
-  })
+  });
 
   it('Should be able to visit the page and view a form and existing reservation cards', () => {
     cy.get('.resy-form').children('input').should('have.length', '4');
     cy.get('.resy-form').children('button').contains('Make Reservation');
     cy.get('.booking-view').children().should('have.length', '3');
   });
+
+  it('should be able to select the name input and fill it with the corresponding value', () => {
+    cy.get('input[name="name"]')
+      .type('Alex')
+      .should('have.value', 'Alex')
+  })
+
+  it('should be able to select the date input and fill it with the corresponding value', () => {
+    cy.get('input[name="date"]')
+      .type('03/02')
+      .should('have.value', '03/02')
+  })
+
+  it('should be able to select the time input and fill it with the corresponding value', () => {
+    cy.get('input[name="time"]')
+      .type('6:00')
+      .should('have.value', '6:00')
+  })
+
+  it('should be able to select the number of guests input and fill it with the corresponding value', () => {
+    cy.get('input[name="number"]')
+      .type('2')
+      .should('have.value', '2')
+  })
 })

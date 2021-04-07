@@ -26,7 +26,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          <ResyView />
+          <ResyView bookings={this.state.bookings} />
         </div>
       </div>
     )

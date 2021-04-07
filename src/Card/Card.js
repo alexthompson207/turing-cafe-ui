@@ -1,14 +1,14 @@
 import React from 'react';
 import './Card.css';
 
-const Card = () => {
+const Card = ({ id, name, date, time, number }) => {
 
   return (
-    <section className='card'>
-      <h3>name</h3>
-      <p>date</p>
-      <p>time</p>
-      <p>Number of guests: number</p>
+    <section className='card' id={id}>
+      <h3>{name}</h3>
+      <p>{date}</p>
+      <p>{time}</p>
+      <p>Number of guests: {number}</p>
       <button>Cancel</button>
     </section>
   )

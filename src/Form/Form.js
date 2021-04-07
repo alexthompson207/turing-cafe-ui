@@ -26,7 +26,7 @@ class Form extends Component {
       time,
       number: Number(number)
     }
-
+    this.props.addResy(newResy);
     this.clearInputs();
   }
 

@@ -109,7 +109,7 @@ describe('Turing Cafe', () => {
   });
 });
 
-describe('Turing Cafe Erros', () => {
+describe('Turing Cafe Input Errors', () => {
 
   beforeEach(() => {
 
@@ -128,8 +128,27 @@ describe('Turing Cafe Erros', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it.only('should display an error if user clicks make reservation button without filling out inputs ', () => {
+  it('should display an error if user clicks make reservation button without filling out inputs ', () => {
     cy.get('.resy-btn').click();
     cy.get('h2').contains('Please enter the correct inputs');
+  });
+});
+
+describe('Turing Cafe Page Load Error', () => {
+
+  beforeEach(() => {
+
+    cy.intercept({
+      method: 'GET',
+      url: 'http://localhost:3001/api/v1/reservations'
+    },
+      {
+        statusCode: 500
+      });
+    cy.visit('http://localhost:3000');
+  });
+
+  it.only('should display an error if server is down', () => {
+    cy.get('h2').contains('Oops, something went wrong');
   });
 })

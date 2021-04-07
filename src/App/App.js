@@ -16,7 +16,7 @@ class App extends Component {
   componentDidMount() {
     getAllReservations()
       .then(bookings => this.setState({ bookings }))
-      .catch(err => this.setState({ error: 'Opps, something went wrong' }))
+      .catch(err => this.setState({ error: 'Oops, something went wrong' }))
   }
 
   addResy = (newResy) => {

@@ -28,16 +28,25 @@ class App extends Component {
       .then(response => response.json())
       .then(resy => {
         if (resy.id) {
-          this.setState({ bookings: [...this.state.bookings, resy], error: '' })
+          this.setState({ bookings: [...this.state.bookings, resy], error: '' });
         } else {
-          this.setState({ error: 'Please enter the correct inputs' })
+          this.setState({ error: 'Please enter the correct inputs' });
         }
       })
   }
 
   deleteResy = (id) => {
-    const filteredResys = this.state.bookings.filter(booking => booking.id !== id)
-    this.setState({ bookings: filteredResys })
+    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: 'DELETE'
+    })
+      .then(resy => {
+        if (resy.ok) {
+          const filteredResys = this.state.bookings.filter(booking => booking.id !== id);
+          this.setState({ bookings: filteredResys });
+        } else {
+          this.setState({ error: 'There was an issue canceling this reservation' });
+        }
+      })
   }
 
   render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ResyView from '../ResyView/ResyView';
 import Form from '../Form/Form';
-import { getAllReservations, postReservation, deleteReservation } from '../apiCalls';
+import { getAllReservations, postReservation, deleteReservation } from '../../apiCalls';
 
 class App extends Component {
   constructor() {
